@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xtreme</title>
+
+    {#<link rel="stylesheet" href=" {{ 'http://' ~siteUrlGlobal.siteUrlField ~ '/css/bootstrap.min.css' }}"/>#}
+
+    <link rel="stylesheet" href=" {{ url('/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href=" {{ url('/css/xtreme.css') }}"/>
+</head>
+<body>
+{% block header %}
+    {% include 'navbar_layout.html.twig' %}
+{% endblock %}
+{% block content %}
+    <h1>{{ entry.title }}</h1>
+
+    {{ entry.body }}
+{% endblock %}
+</body>
+<script src="{{ url('/js/bootstrap.min.js') }}"></script>
+</html>

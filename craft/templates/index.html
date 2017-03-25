@@ -17,17 +17,23 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layout" %}
+{% extends "extreme_layout.html.twig" %}
 
 {% block content %}
-	<h1>{{ entry.title }}</h1>
-
-	{{ entry.body }}
-
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+<div class="container-fluid">
+ <h1>{{ entry.title }}</h1>
+ <div class="craft-entry-body">
+  {{ entry.body }}
+  <!--{% for image in craft.assets.kind('image') %}-->
+   <!--{{ image }}-->
+  <!--{% endfor %}-->
+     {% set image = entry.myImage.first() %}
+     {% if image %}
+     <!--We use a craft image resizer that we named thumbnail (image resizers are called transforms in craft terminology)' -->
+     <img src="{{ image.getUrl('thumbnail') }}" />
+     <!--We are displaying the image in it's original size-->
+     <img src="{{ image.getUrl() }}" />
+     {% endif %}
+ </div>
+</div>
 {% endblock %}

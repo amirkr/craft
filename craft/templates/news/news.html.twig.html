@@ -1,0 +1,17 @@
+{% extends "extreme_layout.html.twig" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>{{ entry.title }}</h1>
+    <div class="craft-entry-body">
+        {{ entry.body }}
+        <hr/>
+        <ul>
+            {% for newsArticle in craft.entries.section('newsFeed').find() %}
+            <li><a href="{{ newsArticle.url }}">{{ newsArticle.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>
+{% endblock %}
